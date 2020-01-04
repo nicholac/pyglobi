@@ -20,5 +20,19 @@ class PyGlobiException(IOError):
 class EoLIDNotFound(PyGlobiException):
     """EoL ID not fgound - no data associated with the requested EoL ID"""
 
+class GlobiCypherError(PyGlobiException):
+    """An error occured with the Cypher Query
+    
+    Arrtibutes:
+        status_code: HTTP status code
+        message: message associated with the result
+        cypher: The query assocaited with the error
+    
+    """
+    def __init__(self, status_code, message, cypher):
+        self.status_code = status_code
+        self.message = message
+        self.cypher = cypher
+
 class HTTPError(PyGlobiException):
     """An HTTP error occurred."""

@@ -2,3 +2,5 @@ requests
 pytest
 setuptools
 wheel
+twine
+neo4j-driver>=1.7.6

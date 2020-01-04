@@ -1,30 +1,48 @@
 
 import os
+import sys
 from setuptools import setup, find_packages
 
+import twine
+
 here = os.path.abspath(os.path.dirname(__file__))
+
+
+if sys.argv[-1] == 'build':
+    os.system('python setup.py sdist bdist_wheel')
+    sys.exit()
+
+
+if sys.argv[-1] == 'publish':
+    #os.system('python setup.py sdist bdist_wheel')
+    #os.system('twine upload dist/*')
+    print ('Skipping - not ready to upload yet')
+    sys.exit()
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 # TODO
-requires = [
-    #'chardet>=3.0.2,<3.1.0',
+packages = ['pyglobi']
 
+requires = [
+    'requests>=2.22.0',
+    'neo4j-driver>=1.7.6'
 ]
 
 # TODO:
 test_requirements = [
-    # 'pytest>=3'
+    'pytest>=3'
 ]
 
 about = {}
-with open(os.path.join(here, 'pyglobi', '__version__.py'), 'r', 'utf-8') as f:
+with open(os.path.join(here, 'pyglobi', '__version__.py'), 'r') as f:
     exec(f.read(), about)
 
-with open('README.md', 'r', 'utf-8') as f:
+with open('README.md', 'r') as f:
     readme = f.read()
-with open('HISTORY.md', 'r', 'utf-8') as f:
+with open('HISTORY.md', 'r') as f:
     history = f.read()
 
 setup(

@@ -9,20 +9,24 @@ This module implements the Main PyGlobi API.
 """
 
 from . import sessions
+from . import config
+
+def check_config():
+    return config.globi_neo_url
 
 def cypher(cypher: str, **kwargs) -> bool:
     """Constructs, sends and returns results of a cypher request to Globi 
 
     Args:
         cypher: Cypher string query.
-        url: The second parameter.
 
     Returns:
-        The return value. True for success, False otherwise.
+        TODO: Data parsing options with this setting 
+        Neo4j JSON
 
     """
-    with sessions.CypherSession(cypher=cypher) as session:
-        return session.run_cypher()
+    with sessions.CypherSession(globi_neo_url=config.globi_neo_url) as session:
+        return session.query(cypher)
 
 def geodata(eol_id: int, **kwargs) -> dict:
     """Constructs, sends and returns results of a EoL geodata request to Globi 

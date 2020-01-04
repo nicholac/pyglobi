@@ -8,6 +8,8 @@ Utility methods for URL's used by pyglobi
 :license: MIT, see LICENSE for more details.
 """
 import os
+from urllib.request import urlopen
+from urllib.error import URLError
 
 from .config import (
     globi_neo_url,
@@ -42,3 +44,19 @@ def construct_eol_geo_url(eol_id: int, **kwargs) -> str:
     _folder = str(eol_id)[-2:]
     return os.path.join(eol_geo_url, _folder, str(eol_id)+'.json')
 
+def check_internet_connectivity(tries=5) -> bool:
+    """Check for an internet connection (required for the API)
+    Kwargs:
+        tries: Number of tries before giving up
+    
+    Returns:
+        True if internet else False
+    """
+    internet = False
+    for _ in range(tries):
+        try: 
+            urlopen("http://www.google.com")
+            internet = True
+        except URLError:
+            pass
+    return internet
