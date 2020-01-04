@@ -8,10 +8,13 @@ import twine
 here = os.path.abspath(os.path.dirname(__file__))
 
 
+if sys.argv[-1] == 'test':
+    os.system('python -m pytest tests')
+    sys.exit()
+
 if sys.argv[-1] == 'build':
     os.system('python setup.py sdist bdist_wheel')
     sys.exit()
-
 
 if sys.argv[-1] == 'publish':
     #os.system('python setup.py sdist bdist_wheel')

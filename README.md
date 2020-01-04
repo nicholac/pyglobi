@@ -2,10 +2,11 @@
 
 TODO: 
 
-* Implement tests for the simple endpoints - DONE
-* 
+* Cypher is working - NEXT: Data IO from Cypher results (Dict, Pandas, networkX as MVP)
+* Make wrapped Cypher queries (as per rglobi)
+* Offline queries - by pulling and importing the various tar.gz implementations to some local cache
 * Implement doc building
-* Check building (Done), packaging, testing, docs
+* Check building (Done), packaging (done - not tested publish), testing (doing), docs
 * Continue to implement everything rglobi has
 
 API:
