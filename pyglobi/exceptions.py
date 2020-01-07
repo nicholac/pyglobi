@@ -18,12 +18,15 @@ class PyGlobiException(IOError):
 
 
 class EoLIDNotFound(PyGlobiException):
-    """EoL ID not fgound - no data associated with the requested EoL ID"""
+    """EoL ID not found - no data associated with the requested EoL ID"""
+
+class UnknownInteractionType(PyGlobiException):
+    """Unknown Interaction Type- no data associated with the requested interaction type"""
 
 class GlobiCypherError(PyGlobiException):
     """An error occured with the Cypher Query
     
-    Arrtibutes:
+    Attributes:
         status_code: HTTP status code
         message: message associated with the result
         cypher: The query assocaited with the error

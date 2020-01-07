@@ -30,8 +30,7 @@ with open("README.md", "r") as fh:
 packages = ['pyglobi']
 
 requires = [
-    'requests>=2.22.0',
-    'neo4j-driver>=1.7.6'
+    'requests>=2.22.0'
 ]
 
 # TODO:

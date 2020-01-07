@@ -21,5 +21,3 @@ def test_cypher_query_altered_neo_uri():
     assert(pyglobi.config.globi_neo_url == "https://null")
     with pytest.raises(pyglobi.exceptions.GlobiCypherError):
         _ = pyglobi.cypher(basic_query)
-
-

@@ -1,0 +1,8 @@
+Get all distinct taxon relatiopnship type names
+START taxon = node:taxons("*:*") MATCH taxon-[r]->taxon RETURN distinct(type(r))
+
+
+Example of single relation query:
+{
+	"query": "START taxon = node:taxons(\"*:*\") MATCH taxon-[r:VISITED_BY]->taxon RETURN taxon, r"
+}

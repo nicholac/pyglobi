@@ -17,6 +17,8 @@ from .config import (
     eol_geo_url
 )
 
+from pyglobi import interactions as internal_interactions
+
 def construct_eol_url(eol_id: int, **kwargs) -> str:
     """Build an EoL URL page for the given taxonomy ID
 
@@ -60,3 +62,14 @@ def check_internet_connectivity(tries=5) -> bool:
         except URLError:
             pass
     return internet
+
+#TODO: Put this somewhere else
+def interaction_types_to_neo_query(interactions: list=[]):
+    """
+    Convert the given interactions to a string suitable for the Neo Rels query
+    Args:
+        interactions: list[Interaction, ...] List of Interactions to convert
+    """
+    if len(interactions) == 0:
+        __types =  [interaction.neo_type for _, interaction in internal_interactions.items() if interaction.neo_type != ""]
+        return "|".join(__types)
